@@ -16,12 +16,12 @@ public class UserControllerTest {
     public void testCreateUser() {
 
         //create a new user
-       User user = new User("testuser", "test@example.com", "StrongPass123");
+        User user = new User("testuser", "test@example.com", "StrongPass123");
 
-       assertEquals("testuser", user.getUsername());
-       assertEquals("test@example.com", user.getEmail());
-       assertEquals("StrongPass123", user.getPassword());
-       assertNotNull(user); // user is not null
+        assertEquals("testuser", user.getUsername());
+        assertEquals("test@example.com", user.getEmail());
+        assertEquals("StrongPass123", user.getPassword());
+        assertNotNull(user); // user is not null
     }
 
     @Test 
@@ -32,10 +32,9 @@ public class UserControllerTest {
         String username = "testuser";
         String password = "StrongPass123";
 
-        boolean loginSuccessful = "testuser".equals(username) && "StrongPass123".equals(password);
+        boolean loginSuccessful = "testuser1".equals(username) && "StrongPass123".equals(password);
 
         assertTrue(loginSuccessful, "Login Failed");
-        assertEquals("Login successful, redirecting to dashboard", loginSuccessful == true);
     }
 
 
