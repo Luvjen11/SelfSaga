@@ -2,6 +2,8 @@ package jennifer.SelfSaga.User;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 @Service
 
@@ -9,6 +11,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); //for password hashing
 
     public User registerUser(User user) {
 
@@ -22,7 +26,22 @@ public class UserService {
 
         // implement password service logic
 
-        return userRepository.save(user);
-        
+        if (!isPasswordStrong(user.getPassword())) {
+            throw new RuntimeException("Password is not strong enough!");
+        }
+
+        String hashedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashedPassword);
+
+        return userRepository.save(user);  
+    }
+
+    private boolean isPasswordStrong(String password) {
+        // Check length (at least 8 characters)
+        if (password == null || password.length() < 8) {
+            return false;
+        }
+
+        return true;
     }
 }
