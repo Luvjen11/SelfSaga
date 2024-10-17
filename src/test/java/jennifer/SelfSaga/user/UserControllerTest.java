@@ -1,42 +1,44 @@
 package jennifer.SelfSaga.user;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import org.apache.catalina.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+
+import jennifer.SelfSaga.User.UserService;
+
+
+@SpringBootTest
+@AutoConfigureMockMvc
 
 public class UserControllerTest {
 
-    // @Test
-    // @DisplayName("POST /selfsaga/users/register - create a user with valid email, unique username, and strong password")
-    // public void testCreateUser() {
+    @Autowired
+    private MockMvc mockMvc;
 
-    //     //create a new user
-    //     User user = new User("testuser", "test@example.com", "StrongPass123");
+    @MockBean
+    private UserService userService;
 
-    //     assertEquals("testuser", user.getUsername());
-    //     assertEquals("test@example.com", user.getEmail());
-    //     assertEquals("StrongPass123", user.getPassword());
-    //     assertNotNull(user); // user is not null
-    // }
+    @Test
+    @DisplayName("POST /selfsaga/users/register - create a user with valid email, unique username, and strong password")
+    public void testRegisterUser() throws Exception {
 
-    // @Test 
-    // @DisplayName("/selfsaga/users/login - authenticate User")
-    // public void testLoginUser() {
+        String registeredUser = "{\"username\": \"testuser\", \"email\": \"test@example.com\", \"password\": \"StrongPass123\"}";
 
-    //     //define username and password
-    //     String username = "testuser";
-    //     String password = "StrongPass123";
-
-    //     boolean loginSuccessful = "testuser1".equals(username) && "StrongPass123".equals(password);
-
-    //     assertTrue(loginSuccessful, "Login Failed");
-    // }
-
-
+        mockMvc.perform(post("/selfsaga/users/register")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(registeredUser))
+                .andExpect(status().isCreated())  // Expecting HTTP 201 Created
+                .andExpect(jsonPath("$.username").value("testuser"))  // Ensure username matches
+                .andExpect(jsonPath("$.email").value("test@example.com"));  // Ensure email matches
+    }
 
 }

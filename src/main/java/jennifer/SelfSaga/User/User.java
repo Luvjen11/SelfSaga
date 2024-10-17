@@ -19,6 +19,10 @@ public class User {
     private String password;
     private String username;
 
+    public User() {
+       //empty constructor
+    } 
+
     public User(String email, String password, String username) {
 
         this.email = email;

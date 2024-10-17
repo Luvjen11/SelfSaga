@@ -19,9 +19,11 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody User user) {
         try {
+            //handle the registration and return user and successful status
             User registeredUser = userService.registerUser(user);
             return new ResponseEntity<User>(registeredUser, HttpStatus.CREATED);
         } catch (RuntimeException e) {
+            // for double username and/or email
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
