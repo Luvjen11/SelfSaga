@@ -1,13 +1,17 @@
 package jennifer.SelfSaga.User;
 
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Service
 
-public class UserService {
+public class UserService implements UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
@@ -19,10 +23,12 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
             throw new RuntimeException("This Email is already registered!");
         }
+        user.setEmail(user.getEmail());
 
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new RuntimeException("This Username is already taken");
         }
+        user.setUsername(user.getUsername());
 
         // implement password service logic
 
@@ -43,5 +49,22 @@ public class UserService {
         }
 
         return true;
+    }
+
+    // login/authentication
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<User> user = userRepository.findByUsername(username);
+
+        if (user.isPresent()) {
+            var userObj = user.get();
+            return org.springframework.security.core.userdetails.User.builder()
+                    .username(userObj.getUsername())
+                    .password(userObj.getPassword())
+                    .authorities("USER")
+                    .build();
+        } else {
+            throw new UsernameNotFoundException(username);
+        }
     }
 }
