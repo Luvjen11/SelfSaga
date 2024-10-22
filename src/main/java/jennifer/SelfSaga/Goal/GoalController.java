@@ -5,8 +5,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +25,7 @@ public class GoalController {
 
     //create a new goal
     @PostMapping("/{username}/goals")
-    public Goal createGoals(@RequestBody Goal goal, String username) {
+    public Goal createGoals(@RequestBody Goal goal, @PathVariable String username) {
         return goalService.createGoal(goal, username);
     }
 
@@ -30,5 +33,15 @@ public class GoalController {
     @GetMapping("/{username}/goals")
     public List<Goal> getGoalsByUsername(@RequestParam String username) {
         return goalService.getGoalsByUsername(username);
+    }
+
+    @PutMapping("/{username}/goals/{goalId}")
+    public Goal updateGoal(@PathVariable Long goalId, @PathVariable String username, @RequestBody Goal goal) {
+        return goalService.updateGoal(goalId, username, goal);
+    }
+
+    @DeleteMapping("{username}/goals/{goalId}")
+    public void deleteGoal(@PathVariable Long goalId, @PathVariable String username) {
+        goalService.deleteGoal(goalId, username);
     }
 }

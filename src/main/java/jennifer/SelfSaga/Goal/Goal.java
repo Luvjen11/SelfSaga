@@ -28,7 +28,7 @@ public class Goal {
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
 
-    private String username;
+    //private String username;
 
     public Goal() {
         
@@ -85,12 +85,12 @@ public class Goal {
         this.user = user;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    // public String getUsername() {
+    //     return username;
+    // }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+    // public void setUsername(String username) {
+    //     this.username = username;
+    // }
 
 }
