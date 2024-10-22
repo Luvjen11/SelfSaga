@@ -99,8 +99,9 @@ Completed tasks earn points
 ## API Endpoints
 | Method | Endpoint | Description |
 | --- | --- | --- |
+| GET | /selfsaga/home | get home page |
 | POST | /selfsaga/users/register | Register a new User (email, password, username) |
-| POST | /selfsaga/users/login | Authenticates User |
+| POST | /login | Authenticates User |
 | GET | /selfsaga/users/dashboard/{userId} | Returns user dashboard/profile things(goals, tasks, progress, level, badge…) |
 | POST | /selfsaga/users/{userId}/goals | creates new goal(title, description, start date, due date) |
 | GET | /selfsaga/users/{userId}/goals | gets all goals of specific user |
