@@ -99,17 +99,19 @@ Completed tasks earn points
 ## API Endpoints
 | Method | Endpoint | Description |
 | --- | --- | --- |
-| GET | /selfsaga/home | get home page |
+| GET | /selfsaga | get welcome page of web application (everyone can access) |
+| GET | /selfsaga/home | get home page after login/registration |
+| GET | /selfsaga/login | get login page |
 | POST | /selfsaga/users/register | Register a new User (email, password, username) |
 | POST | /selfsaga/login | Authenticates User |
-| GET | /selfsaga/users/dashboard/{userId} | Returns user dashboard/profile things(goals, tasks, progress, level, badge…) |
-| POST | /selfsaga/users/{userId}/goals | creates new goal(title, description, start date, due date) |
-| GET | /selfsaga/users/{userId}/goals | gets all goals of specific user |
-| PUT | /selfsaga/users/{userId}/goals/{goalId} | update goal details (title, description, start date, due date) |
-| GET | /selfsaga/users/{userId}/goals/{goalId}/tasks | gets all tasks of specific goal |
-| DELETE | /selfsaga/users/{userId}/goals/{goalId}/tasks/{taskId} | delete task under a specific goal |
-| GET | /selfsaga/users/{userId}/progress | get user progress showinh how many goals and tasks completed |
-| PUT | /selfsaga/users/{userId}/progress | update user progress when task or goal is completed |
+| GET | /selfsaga/users/{username} | Returns user dashboard/profile details(goals, tasks, progress, level, badge…) |
+| POST | /selfsaga/users/{username}/goals | creates new goal(title, description, start date, due date) |
+| GET | /selfsaga/users/{username}/goals | gets all goals of specific user |
+| PUT | /selfsaga/users/{username}/goals/{goalId} | update goal details (title, description, start date, due date) |
+| GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific goal |
+| DELETE | /selfsaga/users/{username}/goals/{goalId}/tasks/{taskId} | delete task under a specific goal |
+| GET | /selfsaga/users/{username}/progress | get user progress showinh how many goals and tasks completed |
+| PUT | /selfsaga/users/{username}/progress | update user progress when task or goal is completed |
 
 
 [1]: #project-overview
