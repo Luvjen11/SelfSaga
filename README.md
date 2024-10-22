@@ -80,7 +80,7 @@ Progress is tracked, when all tasks are complete, goal is marked as complete
 
 ---
 
-User can create tasks with title and due date
+User can create tasks with title, start date and due date
 
 Tasks can be marked as “pending” or “completed”
 
