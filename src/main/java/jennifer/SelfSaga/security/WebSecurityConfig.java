@@ -25,13 +25,13 @@ public class WebSecurityConfig {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/selfsaga/users/register", "/selfsaga/home").permitAll(); // can access without authentication
+                    registry.requestMatchers("/selfsaga/users/register", "/selfsaga/home", "/selfsaga/login").permitAll(); // can access without authentication
                     registry.anyRequest().authenticated();
                 })
-                .formLogin(form -> form
-                        // Use the default login form for now
-                        .permitAll())
-                .logout(logout -> logout.permitAll()) // Allow everyone to log out
+                .formLogin(form -> form 
+                    .loginPage("/selfsaga/login").permitAll()
+                )
+                //.logout(logout -> logout.permitAll()) // Allow everyone to log out
                 .build();
     }
 

@@ -28,9 +28,4 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
-
-    @GetMapping("/home")
-    public String handleWelcome() {
-        return "home page";  // Return home page content
-    }
 }
