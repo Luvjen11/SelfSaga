@@ -18,6 +18,8 @@ public class User {
     private String email;
     private String password;
     private String username;
+    private Integer xp = 0;
+    private Integer level =1;
 
     public User() {
        //empty constructor
@@ -58,4 +60,19 @@ public class User {
         this.username = username;
     }
 
+    public Integer getXp() {
+        return xp;
+    }
+
+    public void setXp(Integer xp) {
+        this.xp = xp;
+    }
+
+    public Integer getlevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
 }
