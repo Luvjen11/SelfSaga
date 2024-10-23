@@ -24,9 +24,9 @@ public class TaskService {
         return taskRepository.findByGoalId(goalId);
     }
 
-    //get tasks
-    public List<Task> getTasks() {
-        return taskRepository.findAll();
+    //get tasks of a user
+    public List<Task> getAllTasksByUsername(String username) {
+        return taskRepository.findAllByUsername(username);
     }
 
     //create task for specific goal
