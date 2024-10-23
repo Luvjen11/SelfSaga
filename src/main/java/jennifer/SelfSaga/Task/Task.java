@@ -25,7 +25,7 @@ public class Task {
     private String status;
 
     @ManyToOne
-    @JoinColumn(name = "goal_id", nullable = false)
+    @JoinColumn(name = "goal_id", nullable = true)
     private Goal goal;
 
     public Task() {
