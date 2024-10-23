@@ -19,49 +19,49 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
-    //get tasks by goal
+    // get tasks by goal
     @GetMapping("/goals/{goalId}/tasks")
     public List<Task> getTasksByGoal(@PathVariable String username, @PathVariable Long goalId) {
         return taskService.getTasksByGoal(goalId);
     }
 
-    //get tasks of a user
+    // get tasks of a user
     @GetMapping("/tasks")
     public List<Task> getTasksByUsername(@PathVariable String username) {
         return taskService.getAllTasksByUsername(username);
     }
 
-    //create task for specific goal
-    @PostMapping("/goals/{goalId}/tasks") 
+    // create task for specific goal
+    @PostMapping("/goals/{goalId}/tasks")
     public Task createTask(@PathVariable Long goalId, @RequestBody Task task) {
         return taskService.createTask(task, goalId);
     }
 
-    //create a single task 
+    // create a single task
     @PostMapping("/tasks")
-    public Task singleTask(@RequestBody Task task) {
-        return taskService.singleTask(task);
+    public Task createTask(@RequestBody Task task) {
+        return taskService.createTask(task, null);
     }
 
-    //update task in a goal
+    // update task in a goal
     @PutMapping("/goals/{goalId}/tasks/{taskId}")
     public Task updateTask(@PathVariable Long goalId, @PathVariable Long taskId, @RequestBody Task task) {
         return taskService.updateTask(goalId, taskId, task);
     }
 
-    //update single task
+    // update single task
     @PutMapping("/tasks/{taskId}")
     public Task updateTask(@PathVariable Long taskId, @RequestBody Task task) {
-        return taskService.updateTask(taskId, task);
+        return taskService.updateTask(null, taskId, task);
     }
 
-    //delete a task to specific goal
+    // delete a task to specific goal
     @DeleteMapping("/goals/{goalId}/tasks/{taskId}")
     public void deleteTask(@PathVariable Long goalId, @PathVariable Long taskId) {
         taskService.deleteTaskByGoal(goalId, taskId);
     }
 
-    //delete a single task 
+    // delete a single task
     @DeleteMapping("/tasks/{taskId}")
     public void deleteTask(@PathVariable Long taskId) {
         taskService.deleteSingleTask(taskId);

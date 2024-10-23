@@ -24,7 +24,7 @@ public class Task {
     private LocalDate dueDate;
     private String status;
 
-    @ManyToOne
+    @ManyToOne(optional = true)
     @JoinColumn(name = "goal_id", nullable = true) // Allow tasks without goals
     private Goal goal;
 

@@ -12,6 +12,6 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findByGoalId(Long goalId);
 
     //find task by username
-    @Query("SELECT t FROM Task t WHERE t.goal.user.username = :username OR t.username = :username")
+    @Query("SELECT t FROM Task t WHERE t.goal.user.username = :username OR t.goal IS NULL")
     List<Task> findAllByUsername(@Param("username") String username);
 } 
