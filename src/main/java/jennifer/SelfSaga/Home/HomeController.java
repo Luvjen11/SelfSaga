@@ -15,4 +15,9 @@ public class HomeController {
     public String handleWelcome() {
         return "home"; // Return home page content
     }
+
+    @GetMapping("/selfsaga")
+    public String handleSelfsaga() {
+        return "selfsaga"; 
+    }
 }
