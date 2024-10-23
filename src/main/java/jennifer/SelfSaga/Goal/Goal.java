@@ -6,10 +6,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jennifer.SelfSaga.Task.Task;
 import jennifer.SelfSaga.User.User;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name="goal")
@@ -27,6 +30,9 @@ public class Goal {
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false)
     private User user;
+
+    @OneToMany(mappedBy = "goal")
+    private List<Task> tasks;
 
     //private String username;
 
@@ -85,6 +91,14 @@ public class Goal {
         this.user = user;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+    
     // public String getUsername() {
     //     return username;
     // }
