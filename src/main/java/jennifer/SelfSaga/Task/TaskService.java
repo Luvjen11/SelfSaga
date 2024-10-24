@@ -115,12 +115,24 @@ public class TaskService {
             int xpEarned = task.getTaskType().getXpValue();
             user.setXp(user.getXp() + xpEarned);
 
+            //check if user has to level up
+            checkLevelUp(user);
+
             taskRepository.save(task);
             userRepository.save(user);
 
         }
 
         return task;
+
+    }
+
+    public void checkLevelUp(User user) {
+
+        int currentXp = user.getXp();
+        int currenLevel = user.getlevel();
+
+        
 
     }
 

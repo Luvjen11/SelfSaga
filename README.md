@@ -58,43 +58,55 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 ### MVP
 - User Registration/Authentication
 - Goal & Task Creation
-- Progress Tracking & Status Update —> show users progress made
+- XP & Level Progression: Users gain XP for completing tasks and goals. As they accumulate XP, they level up.
+    - Daily Tasks: 5 points per task
+    - Routine Tasks: 10 points per task
+    - Goal Completion:
+        - Simple Goal: 100 points
+        - Moderate Goal: 250 points
+        - Complex Goal: (500) points 
+- Leveling System: Users start at Level 1 and need to accumulate progressively more XP for each level
+    -#### Progressive XP System
+        - **XP Required per Level:**
+            - **Level 1:** 100 XP
+            - **Level 2:** 150 XP
+            - **Level 3:** 200 XP
+            - **Level 4:** 250 XP
+            - **Level 5:** 300 XP
+            - **Level 6:** 350 XP
+            - **Level 7:** 400 XP
+            - **Level 8:** 450 XP
+            - **Level 9:** 500 XP
+            - **Level 10:** 550 XP
+            - **Level 11:** 600 XP
+            - **Level 12:** 650 XP
+            - **Level 13:** 700 XP
+            - **Level 14:** 750 XP
+            - **Level 15:** 800 XP
+            - **Level 16:** 850 XP
+            - **Level 17:** 900 XP
+            - **Level 18:** 925 XP
+            - **Level 19:** 950 XP
+            - **Level 20:** 975 XP
+            - **Level 21+:** Add 25 XP per level
+- Progress Tracking & Status Updates — show users’ progress made
+- Basic Profile with XP and Level Display
 
-#### Acceptance Criteria (Test to create)
-
-User can register with email, password and username
-
-Username and email are unique and passwords meet security requirement
-
-User is taken to dashboard (confirmation message)
-
----
-
-User can create goals with a title and description
-
-User can add tasks to goal
-
-Goals have start date and due date
-
-Progress is tracked, when all tasks are complete, goal is marked as complete
-
----
-
-User can create tasks with title, start date and due date
-
-Tasks can be marked as “pending” or “completed”
-
-Completed tasks earn points
+### POST-MVP
+- Vision Board and Quests/Chapters (e.g., healing journey exercises)
+- Community features (e.g., peer feedback, shared challenges)
+- Badge System
+- In-App Store
 
 ## User Story
 | Story | Feature |
 | --- | --- |
 |As a user I want to create a personal account, with my email, password and username.| Account registration with email, password and username |
-|As a user I want to create goals with a description, a reflection, a progress bar depending on my tasks, a status, a start date, a due date, tasks. Finally for each goal I will gain points.|  |
-|As a user I want to add a bio, a profile picture or avatar image and a vision Board.| |
-|As a user besides from goals, I want to create independent daily tasks and track them with a status so that I can stay organized.| |
-|As a user I want to accumulate points and level up and also gain badges so that I stay motivated.| |
-|As a user I want to find quests/chapters to follow when I feel like I’m lost | |
+|As a user I want to create goals with a description, a reflection, a progress bar depending on my tasks, a status, a start date, a due date, tasks. Finally for each goal I will gain points.| Goal creation with progress tracking |
+|As a user I want to add a bio, a profile picture or avatar image and a vision Board.| Profile and Vision Board |
+|As a user besides from goals, I want to create independent daily tasks and track them with a status so that I can stay organized.| Single independent tasks |
+|As a user I want to accumulate points and level up and also gain badges so that I stay motivated.| XP and Leveling system with points for task/goal completion|
+|As a user I want to find quests/chapters to follow when I feel like I’m lost | chapter and quests creation |
 
 ## API Endpoints
 | Method | Endpoint | Description |
