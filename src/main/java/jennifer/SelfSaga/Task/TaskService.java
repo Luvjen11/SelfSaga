@@ -1,5 +1,6 @@
 package jennifer.SelfSaga.Task;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import jennifer.SelfSaga.Goal.Goal;
 import jennifer.SelfSaga.Goal.GoalRepository;
 import jennifer.SelfSaga.User.User;
+import jennifer.SelfSaga.User.UserRepository;
 
 @Service
 public class TaskService {
@@ -18,6 +20,9 @@ public class TaskService {
 
     @Autowired
     private GoalRepository goalRepository;
+
+    @Autowired 
+    private UserRepository userRepository;
 
     // get task for specifi goal
     public List<Task> getTasksByGoal(Long goalId) {
@@ -36,7 +41,7 @@ public class TaskService {
                     .orElseThrow(() -> new IllegalArgumentException("Goal not found with id: " + goalId));
             task.setGoal(goal);
         } else {
-            task.setGoal(null); 
+            task.setGoal(null);
         }
         return taskRepository.save(task);
     }
@@ -91,16 +96,32 @@ public class TaskService {
     }
 
     // for when a task is completed
-    public Task completeTask(Long taskId) {
+    public Task completeTask(Long taskId, String username) throws AccessDeniedException {
+
+        //find task
         Task task = taskRepository.findById(taskId).orElseThrow(() -> new NoSuchElementException("Task not found"));
 
-        //check if task is completed
+        // check if task is completed
         if (!task.getIsCompleted()) {
             task.setIsCompleted(true);
+
+            // then find the user nd deny access if task is not theirs
+            User user = task.getUser();
+            if (user == null || !user.getUsername().equals(username)) {
+                throw new AccessDeniedException("You do not have permission to complete this task");
+            }
+
+            // add Xp for task completion
+            int xpEarned = task.getTaskType().getXpValue();
+            user.setXp(user.getXp() + xpEarned);
+
+            taskRepository.save(task);
+            userRepository.save(user);
+
         }
 
-        // then find the user and add xp for completed task
-        // User user = userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("User not found"));
+        return task;
+
     }
 
 }

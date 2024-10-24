@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jennifer.SelfSaga.Goal.Goal;
+import jennifer.SelfSaga.User.User;
 
 @Entity
 @Table(name="task")
@@ -30,6 +31,10 @@ public class Task {
     @ManyToOne(optional = true)
     @JoinColumn(name = "goal_id", nullable = true) // Allow tasks without goals
     private Goal goal;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Enumerated(EnumType.STRING)
     private TaskType taskType;
@@ -105,6 +110,14 @@ public class Task {
 
     public void setIsCompleted(boolean isCompleted) {
         this.isCompleted = isCompleted;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
