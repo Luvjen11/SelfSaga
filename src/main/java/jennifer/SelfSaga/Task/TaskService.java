@@ -129,10 +129,19 @@ public class TaskService {
 
     public void checkLevelUp(User user) {
 
+        // Collect the current XP and level of the user
         int currentXp = user.getXp();
         int currenLevel = user.getlevel();
-
         
+        //define required xp for next level
+
+
+        //check if user can level up based on accumulated XP
+        // if yes then increment level by one
+
+        // save user updated details
+
+        //method to get xp for next level (use switch)
 
     }
 
