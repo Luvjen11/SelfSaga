@@ -3,6 +3,8 @@ package jennifer.SelfSaga.Task;
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,10 +25,14 @@ public class Task {
     private LocalDate startDate;
     private LocalDate dueDate;
     private String status;
+    private boolean isCompleted = false;
 
     @ManyToOne(optional = true)
     @JoinColumn(name = "goal_id", nullable = true) // Allow tasks without goals
     private Goal goal;
+
+    @Enumerated(EnumType.STRING)
+    private TaskType taskType;
 
     public Task() {
 
@@ -83,6 +89,14 @@ public class Task {
 
     public void setGoal(Goal goal) {
         this.goal = goal;
+    }
+
+    public TaskType getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(TaskType taskType) {
+        this.taskType = taskType;
     }
 
 }
