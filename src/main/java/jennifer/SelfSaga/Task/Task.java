@@ -99,4 +99,12 @@ public class Task {
         this.taskType = taskType;
     }
 
+    public boolean getIsCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
+
 }
