@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import jennifer.SelfSaga.Goal.Goal;
 import jennifer.SelfSaga.Goal.GoalRepository;
+import jennifer.SelfSaga.User.User;
 
 @Service
 public class TaskService {
@@ -87,6 +88,19 @@ public class TaskService {
     // delete single task
     public void deleteSingleTask(Long taskId) {
         taskRepository.deleteById(taskId);
+    }
+
+    // for when a task is completed
+    public Task completeTask(Long taskId) {
+        Task task = taskRepository.findById(taskId).orElseThrow(() -> new NoSuchElementException("Task not found"));
+
+        //check if task is completed
+        if (!task.getIsCompleted()) {
+            task.setIsCompleted(true);
+        }
+
+        // then find the user and add xp for completed task
+        // User user = userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("User not found"));
     }
 
 }
