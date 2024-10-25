@@ -33,14 +33,14 @@ public class TaskController {
 
     // create task for specific goal
     @PostMapping("/goals/{goalId}/tasks")
-    public Task createTask(@PathVariable Long goalId, @RequestBody Task task) {
-        return taskService.createTask(task, goalId);
+    public Task createTask(@PathVariable String username, @PathVariable Long goalId, @RequestBody Task task) {
+        return taskService.createTask(username, task, goalId);
     }
 
     // create a single task
     @PostMapping("/tasks")
-    public Task createTask(@RequestBody Task task) {
-        return taskService.createTask(task, null);
+    public Task createTask(@PathVariable String username, @RequestBody Task task) {
+        return taskService.createTask(username, task, null);
     }
 
     // update task in a goal

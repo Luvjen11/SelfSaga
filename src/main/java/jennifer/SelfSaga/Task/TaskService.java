@@ -35,7 +35,14 @@ public class TaskService {
     }
 
     // create task for specific goal
-    public Task createTask(Task task, Long goalId) {
+    public Task createTask(String username, Task task, Long goalId) {
+
+        // get user first
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("User not found with username: " + username));
+        
+        //assign task to user
+        task.setUser(user);
+        
         if (goalId != null) {
             Goal goal = goalRepository.findById(goalId)
                     .orElseThrow(() -> new IllegalArgumentException("Goal not found with id: " + goalId));
@@ -131,18 +138,36 @@ public class TaskService {
 
         // Collect the current XP and level of the user
         int currentXp = user.getXp();
-        int currenLevel = user.getlevel();
+        int currentLevel = user.getLevel();
         
         //define required xp for next level
-
-
         //check if user can level up based on accumulated XP
-        // if yes then increment level by one
+        while (currentXp >= xpForNextLevel(currentLevel + 1)) {
 
-        // save user updated details
-
-        //method to get xp for next level (use switch)
+            // if yes then increment level by one
+            currentLevel++;
+            // save user updated details
+            user.setLevel(currentLevel); 
+        }
 
     }
+
+    //method to get xp for next level (use switch)
+    public int xpForNextLevel(int level) {
+        switch (level) {
+            case 1:
+                return 100;
+            case 2:
+                return 250;
+            case 3:
+                return 400;
+            case 4:
+                return 600;
+            case 5:
+                return 850;
+            default:  
+                return 1000 + (level - 5) * 200; // increse of 200
+        }
+    } 
 
 }

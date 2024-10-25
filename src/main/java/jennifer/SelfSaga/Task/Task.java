@@ -32,8 +32,8 @@ public class Task {
     @JoinColumn(name = "goal_id", nullable = true) // Allow tasks without goals
     private Goal goal;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Enumerated(EnumType.STRING)
