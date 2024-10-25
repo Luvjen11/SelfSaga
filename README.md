@@ -66,29 +66,9 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
         - Moderate Goal: 250 points
         - Complex Goal: (500) points 
 - Leveling System: Users start at Level 1 and need to accumulate progressively more XP for each level
-    -#### Progressive XP System
-        - **XP Required per Level:**
-            - **Level 1:** 100 XP
-            - **Level 2:** 150 XP
-            - **Level 3:** 200 XP
-            - **Level 4:** 250 XP
-            - **Level 5:** 300 XP
-            - **Level 6:** 350 XP
-            - **Level 7:** 400 XP
-            - **Level 8:** 450 XP
-            - **Level 9:** 500 XP
-            - **Level 10:** 550 XP
-            - **Level 11:** 600 XP
-            - **Level 12:** 650 XP
-            - **Level 13:** 700 XP
-            - **Level 14:** 750 XP
-            - **Level 15:** 800 XP
-            - **Level 16:** 850 XP
-            - **Level 17:** 900 XP
-            - **Level 18:** 925 XP
-            - **Level 19:** 950 XP
-            - **Level 20:** 975 XP
-            - **Level 21+:** Add 25 XP per level
+ - **Leveling Calculation**:
+   - XP is accumulated by completing tasks. Task XP values are based on `TaskType`, and users level up when they reach XP thresholds.
+   - XP thresholds increase as follows: 100 XP for Level 2, 250 XP for Level 3, 400 XP for Level 4, etc., with subsequent levels requiring progressively higher XP.
 - Progress Tracking & Status Updates — show users’ progress made
 - Basic Profile with XP and Level Display
 
@@ -118,6 +98,10 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 | POST | /selfsaga/login | Authenticates User |
 | GET | /selfsaga/users/{username} | Returns user dashboard/profile details(goals, tasks, progress, level, badge…) |
 | POST | /selfsaga/users/{username}/goals | creates new goal(title, description, start date, due date) |
+| GET | /selfsaga/users/{username}/tasks | gets all tasks of specific user |
+| GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific user connected to a goal through goalId |
+| POST | /selfsaga/users/{username}/goals/{goalId}/tasks | creates a task under a specific goal for a user |
+| POST | /selfsaga/users/{username}/tasks | creates an independent task for a user |
 | GET | /selfsaga/users/{username}/goals | gets all goals of specific user |
 | PUT | /selfsaga/users/{username}/goals/{goalId} | update goal details (title, description, start date, due date) |
 | GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific goal |
