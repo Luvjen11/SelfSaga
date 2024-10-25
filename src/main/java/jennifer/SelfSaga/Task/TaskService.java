@@ -75,6 +75,7 @@ public class TaskService {
         existingTask.setDueDate(updatedTask.getDueDate());
         existingTask.setStartDate(updatedTask.getStartDate());
         existingTask.setStatus(updatedTask.getStatus());
+        existingTask.setIsCompleted(updatedTask.getIsCompleted());
 
         return taskRepository.save(existingTask);
     }
