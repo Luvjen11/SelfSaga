@@ -59,8 +59,8 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 - User Registration/Authentication
 - Goal & Task Creation
 - XP & Level Progression: Users gain XP for completing tasks and goals. As they accumulate XP, they level up.
-    - Daily Tasks: 5 points per task
-    - Routine Tasks: 10 points per task
+    - Daily Tasks: 10 points per task
+    - Routine Tasks: 15 points per task
     - Goal Completion:
         - Simple Goal: 100 points
         - Moderate Goal: 250 points

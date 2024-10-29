@@ -1,6 +1,7 @@
 package jennifer.SelfSaga.Task;
 
 public enum TaskType {
+
     DAILY(10),
     ROUTINE(15);
 

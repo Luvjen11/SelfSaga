@@ -4,8 +4,10 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jennifer.SelfSaga.Goal.Goal;
 import jennifer.SelfSaga.Goal.GoalRepository;
@@ -13,7 +15,10 @@ import jennifer.SelfSaga.User.User;
 import jennifer.SelfSaga.User.UserRepository;
 
 @Service
+@Transactional
 public class TaskService {
+
+    private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
 
     @Autowired
     private TaskRepository taskRepository;
@@ -48,7 +53,7 @@ public class TaskService {
                     .orElseThrow(() -> new IllegalArgumentException("Goal not found with id: " + goalId));
             task.setGoal(goal);
         } else {
-            task.setGoal(null);
+            task.setGoal(null);  // then creates independent task
         }
         return taskRepository.save(task);
     }
@@ -58,7 +63,7 @@ public class TaskService {
 
         // find task and makes sure it exsists
         Task existingTask = taskRepository.findById(taskId)
-                .orElseThrow(() -> new NoSuchElementException("Task with ID " + taskId + "not found"));
+                .orElseThrow(() -> new NoSuchElementException("Task with ID " + taskId + " not found"));
 
         // check if task belongs to goal
         if (goalId != null) {
@@ -109,19 +114,25 @@ public class TaskService {
         //find task
         Task task = taskRepository.findById(taskId).orElseThrow(() -> new NoSuchElementException("Task not found"));
 
-        // check if task is completed
-        if (!task.getIsCompleted()) {
-            task.setIsCompleted(true);
-
-            // then find the user nd deny access if task is not theirs
-            User user = task.getUser();
+        
+        // then find the user nd deny access if task is not theirs
+        User user = task.getUser();
             if (user == null || !user.getUsername().equals(username)) {
                 throw new AccessDeniedException("You do not have permission to complete this task");
             }
 
-            // add Xp for task completion
-            int xpEarned = task.getTaskType().getXpValue();
-            user.setXp(user.getXp() + xpEarned);
+        // check if task is completed
+        if (!task.getIsCompleted()) {
+            task.setIsCompleted(true);
+
+            // add Xp for task completion 
+            if (task.getTaskType() != null) {
+                int xpEarned = task.getTaskType().getXpValue();
+                System.out.println("testing" + xpEarned);
+                user.setXp(user.getXp() + xpEarned);
+            } else {
+                throw new IllegalStateException("TaskType is missing for task " + task.getId());
+            }
 
             //check if user has to level up
             checkLevelUp(user);
@@ -150,6 +161,8 @@ public class TaskService {
             // save user updated details
             user.setLevel(currentLevel); 
         }
+
+        userRepository.save(user);
 
     }
 
