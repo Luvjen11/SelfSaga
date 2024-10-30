@@ -3,8 +3,9 @@ package jennifer.SelfSaga.Task;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -128,7 +129,7 @@ public class TaskService {
             // add Xp for task completion 
             if (task.getTaskType() != null) {
                 int xpEarned = task.getTaskType().getXpValue();
-                System.out.println("testing" + xpEarned);
+                logger.debug("Task completed. XP earned: {}", xpEarned); // log XP earned
                 user.setXp(user.getXp() + xpEarned);
             } else {
                 throw new IllegalStateException("TaskType is missing for task " + task.getId());
