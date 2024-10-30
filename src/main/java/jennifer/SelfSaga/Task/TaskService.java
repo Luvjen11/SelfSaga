@@ -19,7 +19,7 @@ import jennifer.SelfSaga.User.UserRepository;
 @Transactional
 public class TaskService {
 
-    private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
+    // private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
 
     @Autowired
     private TaskRepository taskRepository;
@@ -129,7 +129,7 @@ public class TaskService {
             // add Xp for task completion 
             if (task.getTaskType() != null) {
                 int xpEarned = task.getTaskType().getXpValue();
-                logger.debug("Task completed. XP earned: {}", xpEarned); // log XP earned
+                // logger.debug("Task completed. XP earned: {}", xpEarned); // log XP earned
                 user.setXp(user.getXp() + xpEarned);
             } else {
                 throw new IllegalStateException("TaskType is missing for task " + task.getId());
