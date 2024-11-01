@@ -3,6 +3,8 @@ package jennifer.SelfSaga.Task;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +21,7 @@ import jennifer.SelfSaga.User.UserRepository;
 @Transactional
 public class TaskService {
 
-    // private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
+    private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
 
     @Autowired
     private TaskRepository taskRepository;
@@ -43,6 +45,7 @@ public class TaskService {
     // create task for specific goal
     public Task createTask(String username, Task task, Long goalId) {
 
+        logger.info("starting create task");
         // get user first
         User user = userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("User not found with username: " + username));
         
@@ -110,42 +113,52 @@ public class TaskService {
     }
 
     // for when a task is completed
-    public Task completeTask(Long taskId, String username) throws AccessDeniedException {
+    public Task completeTask(Long goalId, Long taskId, String username) throws AccessDeniedException {
 
-        //find task
-        Task task = taskRepository.findById(taskId).orElseThrow(() -> new NoSuchElementException("Task not found"));
-
+        // Find task by ID
+        Task task = taskRepository.findById(taskId)
+                .orElseThrow(() -> new NoSuchElementException("Task not found with ID: " + taskId));
         
-        // then find the user nd deny access if task is not theirs
-        User user = task.getUser();
-            if (user == null || !user.getUsername().equals(username)) {
-                throw new AccessDeniedException("You do not have permission to complete this task");
+        // If a goalId is provided, verify the task belongs to the goal
+        if (goalId != null) {
+            Goal goal = goalRepository.findById(goalId)
+                    .orElseThrow(() -> new NoSuchElementException("Goal not found with ID: " + goalId));
+            
+            if (!goal.equals(task.getGoal())) {
+                throw new IllegalArgumentException("This task does not belong to the specified goal: " + goalId);
             }
-
-        // check if task is completed
+        }
+        
+        // Verify the user owns the task
+        User user = task.getUser();
+        if (user == null || !user.getUsername().equals(username)) {
+            throw new AccessDeniedException("You do not have permission to complete this task");
+        }
+    
+        // Check if task is already completed
         if (!task.getIsCompleted()) {
             task.setIsCompleted(true);
-
-            // add Xp for task completion 
+    
+            // Add XP for task completion if TaskType is not null
             if (task.getTaskType() != null) {
                 int xpEarned = task.getTaskType().getXpValue();
-                // logger.debug("Task completed. XP earned: {}", xpEarned); // log XP earned
+                logger.debug("Task completed. XP earned: {}", xpEarned);
                 user.setXp(user.getXp() + xpEarned);
             } else {
                 throw new IllegalStateException("TaskType is missing for task " + task.getId());
             }
-
-            //check if user has to level up
+    
+            // Check if the user should level up
             checkLevelUp(user);
-
+    
+            // Save the updated task and user
             taskRepository.save(task);
             userRepository.save(user);
-
         }
-
+    
         return task;
-
     }
+    
 
     public void checkLevelUp(User user) {
 

@@ -67,7 +67,7 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
         - Complex Goal: (500) points 
 - Leveling System: Users start at Level 1 and need to accumulate progressively more XP for each level
  - **Leveling Calculation**:
-   - XP is accumulated by completing tasks. Task XP values are based on `TaskType`, and users level up when they reach XP thresholds.
+   - XP is accumulated by completing tasks and goals. Task XP values are based on `TaskType`, and users level up when they reach XP thresholds.
    - XP thresholds increase as follows: 100 XP for Level 2, 250 XP for Level 3, 400 XP for Level 4, etc., with subsequent levels requiring progressively higher XP.
 - Progress Tracking & Status Updates — show users’ progress made
 - Basic Profile with XP and Level Display
@@ -102,10 +102,15 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 | GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific user connected to a goal through goalId |
 | POST | /selfsaga/users/{username}/goals/{goalId}/tasks | creates a task under a specific goal for a user |
 | POST | /selfsaga/users/{username}/tasks | creates an independent task for a user |
+| GET | /selfsaga/users/{username}/tasks | get tasks by username |
 | GET | /selfsaga/users/{username}/goals | gets all goals of specific user |
 | PUT | /selfsaga/users/{username}/goals/{goalId} | update goal details (title, description, start date, due date) |
+| PATCH | /selfsaga/users/{username}/tasks/{taskId}/complete | to mark a task as complete and gain xp |
+| PATCH | /selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}/complete | to mark a task conneted to a specific goal as complete and gain xp |
+| PUT | /selfsaga/users/{username}/tasks/{taskId}| update single task |
 | GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific goal |
 | DELETE | /selfsaga/users/{username}/goals/{goalId}/tasks/{taskId} | delete task under a specific goal |
+| DELETE | /selfsaga/users/{username}/tasks/{taskId} | delete a single task|
 | GET | /selfsaga/users/{username}/progress | get user progress showinh how many goals and tasks completed |
 | PUT | /selfsaga/users/{username}/progress | update user progress when task or goal is completed |
 
