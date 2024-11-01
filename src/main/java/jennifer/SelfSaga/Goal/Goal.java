@@ -1,6 +1,8 @@
 package jennifer.SelfSaga.Goal;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,6 +11,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jennifer.SelfSaga.Task.Task;
+import jennifer.SelfSaga.Task.TaskType;
 import jennifer.SelfSaga.User.User;
 
 import java.time.LocalDate;
@@ -33,6 +36,12 @@ public class Goal {
 
     @OneToMany(mappedBy = "goal")
     private List<Task> tasks;
+
+    private Boolean isCompleted = false;  // Ito add XP if goal is completed
+
+    @Enumerated(EnumType.STRING)
+    private GoalType goalType;
+
 
     //private String username;
 
@@ -97,6 +106,22 @@ public class Goal {
 
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
+    }
+
+    public Boolean getIsCompleted() {
+        return isCompleted;
+    }
+
+    public void setIsCompleted(Boolean isCompleted) {
+        this.isCompleted = isCompleted;
+    }
+
+    public GoalType getGoalType() {
+        return goalType;
+    }
+
+    public void setGoalType(GoalType goalType) {
+        this.goalType = goalType;
     }
     
     // public String getUsername() {
