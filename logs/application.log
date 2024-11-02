@@ -18373,3 +18373,201 @@ java.io.EOFException: null
 2024-11-02T09:10:42.578Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
 2024-11-02T09:11:12.625Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
 2024-11-02T09:11:12.628Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:11:42.649Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:11:42.650Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:12:12.658Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:12:12.659Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:12:42.673Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:12:42.676Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:12:47.192Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-5] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+
+java.io.EOFException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.fillReadBuffer(NioEndpoint.java:1293) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.read(NioEndpoint.java:1181) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11InputBuffer.fill(Http11InputBuffer.java:793) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:348) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:257) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-11-02T09:12:47.200Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : On TransactionImpl creation, JpaCompliance#isJpaTransactionComplianceEnabled == false
+2024-11-02T09:12:47.198Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-5] o.apache.coyote.http11.Http11Processor   : Error state [CLOSE_CONNECTION_NOW] reported while processing request
+
+java.io.EOFException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.fillReadBuffer(NioEndpoint.java:1293) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.read(NioEndpoint.java:1181) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11InputBuffer.fill(Http11InputBuffer.java:793) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:348) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:257) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-11-02T09:12:47.203Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : begin
+2024-11-02T09:12:47.204Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.sql.exec               : Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+2024-11-02T09:12:47.205Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Initializer list:
+	  jennifer.SelfSaga.Goal.Goal.tasks -> DelayedCollectionInitializer(jennifer.SelfSaga.Goal.Goal.tasks)@2037659882 (PluralAttribute(jennifer.SelfSaga.Goal.Goal.tasks))
+	  jennifer.SelfSaga.Goal.Goal -> EntityResultInitializer(jennifer.SelfSaga.Goal.Goal)@971583726 (SingleTableEntityPersister(jennifer.SelfSaga.Goal.Goal))
+	  jennifer.SelfSaga.Goal.Goal.user -> EntityJoinedFetchInitializer(jennifer.SelfSaga.Goal.Goal.user)@1212629688 (ToOneAttributeMapping(NavigableRole[jennifer.SelfSaga.Goal.Goal.user])@563145574)
+
+2024-11-02T09:12:47.206Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.SQL                        : select g1_0.id,g1_0.description,g1_0.due_date,g1_0.goal_type,g1_0.is_completed,g1_0.start_date,g1_0.title,g1_0.user_id,u1_0.id,u1_0.email,u1_0.level,u1_0.password,u1_0.username,u1_0.xp from goal g1_0 join user u1_0 on u1_0.id=g1_0.user_id where g1_0.id=?
+2024-11-02T09:12:47.208Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityResultInitializer) Hydrated EntityKey (jennifer.SelfSaga.Goal.Goal): 4
+2024-11-02T09:12:47.208Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [8] - [1]
+2024-11-02T09:12:47.209Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Hydrated EntityKey (jennifer.SelfSaga.Goal.Goal.user): 1
+2024-11-02T09:12:47.209Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [7] - [1]
+2024-11-02T09:12:47.210Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.o.r.l.o.h.o.r.loading.collection     : (DelayedCollectionInitializer) Current row collection key : jennifer.SelfSaga.Goal.Goal.tasks#4
+2024-11-02T09:12:47.211Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Created new entity instance [jennifer.SelfSaga.Goal.Goal.user#1] : 1774582304
+2024-11-02T09:12:47.212Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityResultInitializer) Created new entity instance [jennifer.SelfSaga.Goal.Goal#4] : 459613986
+2024-11-02T09:12:47.213Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [9] - [jennifer@example.com]
+2024-11-02T09:12:47.213Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [10] - [0]
+2024-11-02T09:12:47.214Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [11] - [$2a$10$Ua0ots.cl6AGuURhOJ4DNewNnFf8ZIKm88IcrHJqILoy.OWWjDWRK]
+2024-11-02T09:12:47.215Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [12] - [jennifer123]
+2024-11-02T09:12:47.215Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [13] - [40]
+2024-11-02T09:12:47.216Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Done materializing entityInstance : jennifer.SelfSaga.Goal.Goal.user#1
+2024-11-02T09:12:47.216Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [1] - [Build API web application]
+2024-11-02T09:12:47.216Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [2] - [2024-11-03]
+2024-11-02T09:12:47.217Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [3] - [SIMPLE]
+2024-11-02T09:12:47.217Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [4] - [false]
+2024-11-02T09:12:47.217Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [5] - [2024-10-02]
+2024-11-02T09:12:47.219Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [6] - [Build SelfSaga]
+2024-11-02T09:12:47.220Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityResultInitializer) Done materializing entityInstance : jennifer.SelfSaga.Goal.Goal#4
+2024-11-02T09:12:47.220Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results.loading        : Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.entity.internal.EntityAssembler@1d153a5f
+2024-11-02T09:12:47.221Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : committing
+2024-11-02T09:12:47.222Z  INFO 21592 --- [SelfSaga] [http-nio-8080-exec-6] jennifer.SelfSaga.Goal.GoalService       : Goal completed. Points earned: 100
+2024-11-02T09:12:47.223Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : begin
+2024-11-02T09:12:47.224Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.j.internal.PersistenceUnitUtilImpl   : jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+2024-11-02T09:12:47.225Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : committing
+2024-11-02T09:12:47.226Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Processing flush-time cascades
+2024-11-02T09:12:47.226Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Dirty checking collections
+2024-11-02T09:12:47.226Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.engine.internal.Collections  : Collection found: [jennifer.SelfSaga.Goal.Goal.tasks#4], was: [jennifer.SelfSaga.Goal.Goal.tasks#4] (uninitialized)
+2024-11-02T09:12:47.226Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Flushed: 0 insertions, 2 updates, 0 deletions to 2 objects
+2024-11-02T09:12:47.227Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+2024-11-02T09:12:47.228Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : Listing entities:
+2024-11-02T09:12:47.229Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : jennifer.SelfSaga.User.User{password=$2a$10$Ua0ots.cl6AGuURhOJ4DNewNnFf8ZIKm88IcrHJqILoy.OWWjDWRK, level=1, xp=140, id=1, email=jennifer@example.com, username=jennifer123}
+2024-11-02T09:12:47.229Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : jennifer.SelfSaga.Goal.Goal{goalType=SIMPLE, dueDate=2024-11-03, description=Build API web application, id=4, title=Build SelfSaga, user=jennifer.SelfSaga.User.User#1, startDate=2024-10-02, tasks=<uninitialized>, isCompleted=true}
+2024-11-02T09:12:47.230Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.SQL                        : update user set email=?,level=?,password=?,username=?,xp=? where id=?
+2024-11-02T09:12:47.233Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.SQL                        : update goal set description=?,due_date=?,goal_type=?,is_completed=?,start_date=?,title=?,user_id=? where id=?
+2024-11-02T09:12:47.241Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : begin
+2024-11-02T09:12:47.242Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.j.internal.PersistenceUnitUtilImpl   : jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+2024-11-02T09:12:47.242Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : committing
+2024-11-02T09:12:47.243Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Processing flush-time cascades
+2024-11-02T09:12:47.243Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Dirty checking collections
+2024-11-02T09:12:47.244Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.engine.internal.Collections  : Collection found: [jennifer.SelfSaga.Goal.Goal.tasks#4], was: [jennifer.SelfSaga.Goal.Goal.tasks#4] (uninitialized)
+2024-11-02T09:12:47.244Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+2024-11-02T09:12:47.245Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+2024-11-02T09:12:47.245Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : Listing entities:
+2024-11-02T09:12:47.246Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : jennifer.SelfSaga.User.User{password=$2a$10$Ua0ots.cl6AGuURhOJ4DNewNnFf8ZIKm88IcrHJqILoy.OWWjDWRK, level=1, xp=140, id=1, email=jennifer@example.com, username=jennifer123}
+2024-11-02T09:12:47.246Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : jennifer.SelfSaga.Goal.Goal{goalType=SIMPLE, dueDate=2024-11-03, description=Build API web application, id=4, title=Build SelfSaga, user=jennifer.SelfSaga.User.User#1, startDate=2024-10-02, tasks=<uninitialized>, isCompleted=true}
+2024-11-02T09:12:47.248Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : begin
+2024-11-02T09:12:47.248Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.j.internal.PersistenceUnitUtilImpl   : jakarta.persistence.PersistenceUnitUtil.getIdentifier is only intended to work with enhanced entities (although Hibernate also adapts this support to its proxies); however the passed entity was not enhanced (nor a proxy).. may not be able to read identifier
+2024-11-02T09:12:47.249Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.t.internal.TransactionImpl         : committing
+2024-11-02T09:12:47.249Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Processing flush-time cascades
+2024-11-02T09:12:47.250Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Dirty checking collections
+2024-11-02T09:12:47.250Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.engine.internal.Collections  : Collection found: [jennifer.SelfSaga.Goal.Goal.tasks#4], was: [jennifer.SelfSaga.Goal.Goal.tasks#4] (uninitialized)
+2024-11-02T09:12:47.250Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Flushed: 0 insertions, 0 updates, 0 deletions to 2 objects
+2024-11-02T09:12:47.251Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.e.i.AbstractFlushingEventListener    : Flushed: 0 (re)creations, 0 updates, 0 removals to 1 collections
+2024-11-02T09:12:47.251Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : Listing entities:
+2024-11-02T09:12:47.253Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : jennifer.SelfSaga.User.User{password=$2a$10$Ua0ots.cl6AGuURhOJ4DNewNnFf8ZIKm88IcrHJqILoy.OWWjDWRK, level=1, xp=140, id=1, email=jennifer@example.com, username=jennifer123}
+2024-11-02T09:12:47.253Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.internal.util.EntityPrinter  : jennifer.SelfSaga.Goal.Goal{goalType=SIMPLE, dueDate=2024-11-03, description=Build API web application, id=4, title=Build SelfSaga, user=jennifer.SelfSaga.User.User#1, startDate=2024-10-02, tasks=<uninitialized>, isCompleted=true}
+2024-11-02T09:12:47.256Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.sql.exec               : Skipping reading Query result cache data: cache-enabled = false, cache-mode = IGNORE
+2024-11-02T09:12:47.257Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Initializer list:
+	  jennifer.SelfSaga.Goal.Goal.tasks -> BagInitializer(jennifer.SelfSaga.Goal.Goal.tasks)@1990902508 (PluralAttribute(jennifer.SelfSaga.Goal.Goal.tasks))
+	  jennifer.SelfSaga.Goal.Goal.tasks.{element} -> EntityJoinedFetchInitializer(jennifer.SelfSaga.Goal.Goal.tasks.{element})@1335498431 (EntityCollectionPart(jennifer.SelfSaga.Goal.Goal.tasks#{element})@2016209686)
+	  jennifer.SelfSaga.Goal.Goal.tasks.{element}.user -> EntityJoinedFetchInitializer(jennifer.SelfSaga.Goal.Goal.tasks.{element}.user)@1268836301 (ToOneAttributeMapping(NavigableRole[jennifer.SelfSaga.Task.Task.user])@1448715055)
+	  jennifer.SelfSaga.Goal.Goal.tasks.{element}.goal -> EntitySelectFetchInitializer(jennifer.SelfSaga.Goal.Goal.tasks.{element}.goal)@1347689248 (ToOneAttributeMapping(NavigableRole[jennifer.SelfSaga.Task.Task.goal])@405594001)
+
+2024-11-02T09:12:47.258Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.SQL                        : select t1_0.goal_id,t1_0.id,t1_0.due_date,t1_0.is_completed,t1_0.start_date,t1_0.status,t1_0.task_type,t1_0.title,t1_0.user_id,u1_0.id,u1_0.email,u1_0.level,u1_0.password,u1_0.username,u1_0.xp from task t1_0 left join user u1_0 on u1_0.id=t1_0.user_id where t1_0.goal_id=?
+2024-11-02T09:12:47.260Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [0] - [4]
+2024-11-02T09:12:47.260Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.o.r.l.o.h.o.r.loading.collection     : (BagInitializer) Current row collection key : jennifer.SelfSaga.Goal.Goal.tasks#4
+2024-11-02T09:12:47.260Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [1] - [19]
+2024-11-02T09:12:47.263Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Hydrated EntityKey (jennifer.SelfSaga.Goal.Goal.tasks.{element}): 19
+2024-11-02T09:12:47.263Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [9] - [1]
+2024-11-02T09:12:47.263Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Hydrated EntityKey (jennifer.SelfSaga.Goal.Goal.tasks.{element}.user): 1
+2024-11-02T09:12:47.263Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [8] - [1]
+2024-11-02T09:12:47.264Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Created new entity instance [jennifer.SelfSaga.Goal.Goal.tasks.{element}#19] : 590073217
+2024-11-02T09:12:47.265Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [0] - [4]
+2024-11-02T09:12:47.265Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntitySelectFetchInitializer) Found existing loading entry [jennifer.SelfSaga.Goal.Goal.tasks.{element}.goal#4] - using loading instance
+2024-11-02T09:12:47.265Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.o.r.l.o.h.o.r.loading.collection     : (BagInitializer) Responsible for loading collection [jennifer.SelfSaga.Goal.Goal.tasks#4] : org.hibernate.collection.spi.PersistentBag@1513404499
+2024-11-02T09:12:47.266Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [2] - [2024-11-03]
+2024-11-02T09:12:47.266Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [3] - [true]
+2024-11-02T09:12:47.267Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [4] - [2024-10-23]
+2024-11-02T09:12:47.267Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [5] - [complete]
+2024-11-02T09:12:47.267Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [6] - [DAILY]
+2024-11-02T09:12:47.268Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results                : Extracted JDBC value [7] - [Fix XP bug]
+2024-11-02T09:12:47.270Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.hibernate.orm.results.loading.entity   : (EntityJoinedFetchInitializer) Done materializing entityInstance : jennifer.SelfSaga.Goal.Goal.tasks.{element}#19
+2024-11-02T09:12:47.271Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.o.r.l.o.h.o.r.loading.collection     : (BagInitializer) Reading element from row for collection [jennifer.SelfSaga.Goal.Goal.tasks#4] -> org.hibernate.collection.spi.PersistentBag@1513404499
+2024-11-02T09:12:47.271Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] org.hibernate.orm.results.loading        : Calling top-level assembler (0 / 1) : org.hibernate.sql.results.graph.collection.internal.CollectionAssembler@53565fdf
+2024-11-02T09:12:47.272Z DEBUG 21592 --- [SelfSaga] [http-nio-8080-exec-6] o.h.sql.results.internal.ResultsHelper   : Collection fully initialized: [jennifer.SelfSaga.Goal.Goal.tasks#4]
+2024-11-02T09:12:47.281Z  WARN 21592 --- [SelfSaga] [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)
+2024-11-02T09:12:47.283Z  WARN 21592 --- [SelfSaga] [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
+2024-11-02T09:13:12.681Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:13:12.681Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:13:42.693Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:13:42.694Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:14:12.695Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:14:12.696Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:14:42.704Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:14:42.707Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:15:12.714Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:15:12.715Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:15:42.717Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:15:42.717Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:16:12.733Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:16:12.734Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:16:42.738Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:16:42.739Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:17:12.742Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:17:12.743Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:17:42.748Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:17:42.749Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:18:12.798Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:18:12.870Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:18:42.899Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:18:42.902Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:19:12.907Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:19:12.908Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:19:42.912Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:19:42.913Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:20:12.915Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:20:12.916Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:20:42.923Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:20:42.924Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:21:12.943Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:21:12.944Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:21:42.952Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:21:42.952Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:22:12.968Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:22:12.968Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:22:42.982Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:22:42.983Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:23:12.999Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:23:12.999Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:23:43.006Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:23:43.006Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:24:13.020Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:24:13.022Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:24:43.027Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:24:43.029Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:25:13.036Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:25:13.036Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:25:43.048Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:25:43.049Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:26:13.058Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:26:13.058Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:26:43.072Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:26:43.072Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:27:13.077Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:27:13.078Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
+2024-11-02T09:27:43.082Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Pool stats (total=10, active=0, idle=10, waiting=0)
+2024-11-02T09:27:43.085Z DEBUG 21592 --- [SelfSaga] [HikariPool-17 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-17 - Fill pool skipped, pool has sufficient level or currently being filled.
