@@ -37,6 +37,12 @@ public class GoalService {
     public Goal createGoal(Goal goal, String username) throws IllegalArgumentException {
         
         User user = userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("User with username " + username + " not found"));
+        
+        // making sure goalType is not null
+        if (goal.getGoalType() == null) {
+            throw new IllegalArgumentException("GoalType cannot be null");
+        }
+
         goal.setUser(user); //link goal to user
         return goalRepository.save(goal);
     }
@@ -53,11 +59,17 @@ public class GoalService {
             throw new IllegalArgumentException("This goal does not belong to the user: " + username);
         }
 
+        // Validate that updated goal has a non-null goalType
+        if (updatedGoal.getGoalType() == null) {
+            throw new IllegalArgumentException("GoalType cannot be null");
+        }
+
         //details that can be updated
         existingGoal.setTitle(updatedGoal.getTitle());
         existingGoal.setDescription(updatedGoal.getDescription());
         existingGoal.setDueDate(updatedGoal.getDueDate());
         existingGoal.setStartDate(updatedGoal.getStartDate());
+        existingGoal.setGoalType(updatedGoal.getGoalType());
 
         //updates goal
         return goalRepository.save(existingGoal);
