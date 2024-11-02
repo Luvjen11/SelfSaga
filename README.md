@@ -62,9 +62,15 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
     - Daily Tasks: 10 points per task
     - Routine Tasks: 15 points per task
     - Goal Completion:
-        - Simple Goal: 100 points
-        - Moderate Goal: 250 points
-        - Complex Goal: (500) points 
+        - **Simple Goal:**
+          - **Tasks:** 5–10 tasks
+          - **Points:** 100 points (if all tasks are completed)
+        - **Moderate Goal:**
+          - **Tasks:** 11–20 tasks
+          - **Points:** 250 points (if all tasks are completed)
+        - **Complex Goal:**
+          - **Tasks:** 21–30 tasks
+          - **Points:** 500 points (if all tasks are completed)
 - Leveling System: Users start at Level 1 and need to accumulate progressively more XP for each level
  - **Leveling Calculation**:
    - XP is accumulated by completing tasks and goals. Task XP values are based on `TaskType`, and users level up when they reach XP thresholds.
