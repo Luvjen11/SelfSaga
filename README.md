@@ -95,30 +95,47 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 |As a user I want to find quests/chapters to follow when I feel like I’m lost | chapter and quests creation |
 
 ## API Endpoints
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| GET | /selfsaga | get welcome page of web application (everyone can access) |
-| GET | /selfsaga/home | get home page after login/registration |
-| GET | /selfsaga/login | get login page |
-| POST | /selfsaga/users/register | Register a new User (email, password, username) |
-| POST | /selfsaga/login | Authenticates User |
-| GET | /selfsaga/users/{username} | Returns user dashboard/profile details(goals, tasks, progress, level, badge…) |
-| POST | /selfsaga/users/{username}/goals | creates new goal(title, description, start date, due date) |
-| GET | /selfsaga/users/{username}/tasks | gets all tasks of specific user |
-| GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific user connected to a goal through goalId |
-| POST | /selfsaga/users/{username}/goals/{goalId}/tasks | creates a task under a specific goal for a user |
-| POST | /selfsaga/users/{username}/tasks | creates an independent task for a user |
-| GET | /selfsaga/users/{username}/tasks | get tasks by username |
-| GET | /selfsaga/users/{username}/goals | gets all goals of specific user |
-| PUT | /selfsaga/users/{username}/goals/{goalId} | update goal details (title, description, start date, due date) |
-| PATCH | /selfsaga/users/{username}/tasks/{taskId}/complete | to mark a task as complete and gain xp |
-| PATCH | /selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}/complete | to mark a task conneted to a specific goal as complete and gain xp |
-| PUT | /selfsaga/users/{username}/tasks/{taskId}| update single task |
-| GET | /selfsaga/users/{username}/goals/{goalId}/tasks | gets all tasks of specific goal |
-| DELETE | /selfsaga/users/{username}/goals/{goalId}/tasks/{taskId} | delete task under a specific goal |
-| DELETE | /selfsaga/users/{username}/tasks/{taskId} | delete a single task|
-| GET | /selfsaga/users/{username}/progress | get user progress showinh how many goals and tasks completed |
-| PUT | /selfsaga/users/{username}/progress | update user progress when task or goal is completed |
+
+### General Endpoints
+
+| HTTP Method | Endpoint                             | Description                                                       |
+|-------------|--------------------------------------|-------------------------------------------------------------------|
+| GET         | `/selfsaga`                          | Get the welcome page of the web application (public).             |
+| GET         | `/selfsaga/home`                     | Get the home page after login/registration.                       |
+| GET         | `/selfsaga/login`                    | Get the login page.                                               |
+| POST        | `/selfsaga/users/register`           | Register a new user with email, password, and username.           |
+| POST        | `/selfsaga/login`                    | Authenticate a user.                                              |
+| GET         | `/selfsaga/users/{username}`         | Returns user dashboard/profile details (goals, tasks, progress, level, badge, etc.). |
+
+### Goal Endpoints
+
+| HTTP Method | Endpoint                                              | Description                                                        |
+|-------------|-------------------------------------------------------|--------------------------------------------------------------------|
+| POST        | `/selfsaga/users/{username}/goals`                    | Create a new goal (title, description, start date, due date).      |
+| GET         | `/selfsaga/users/{username}/goals`                    | Get all goals of a specific user.                                  |
+| PUT         | `/selfsaga/users/{username}/goals/{goalId}`           | Update goal details (title, description, start date, due date, goal type). |
+| DELETE      | `/selfsaga/users/{username}/goals/{goalId}`           | Delete a specific goal.                                            |
+| PATCH       | `/selfsaga/users/{username}/goals/{goalId}/complete`  | Mark a goal as complete and gain XP.                               |
+
+### Task Endpoints
+
+| HTTP Method | Endpoint                                                         | Description                                                                       |
+|-------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| GET         | `/selfsaga/users/{username}/tasks`                               | Get all tasks for a specific user.                                                |
+| POST        | `/selfsaga/users/{username}/tasks`                               | Create an independent task for a user.                                            |
+| PUT         | `/selfsaga/users/{username}/tasks/{taskId}`                      | Update details of an independent task.                                            |
+| DELETE      | `/selfsaga/users/{username}/tasks/{taskId}`                      | Delete an independent task.                                                       |
+| PATCH       | `/selfsaga/users/{username}/tasks/{taskId}/complete`             | Mark an independent task as complete and gain XP.                                 |
+
+### Goal-Task Endpoints
+
+| HTTP Method | Endpoint                                                                 | Description                                                             |
+|-------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| GET         | `/selfsaga/users/{username}/goals/{goalId}/tasks`                        | Get all tasks of a specific goal by `goalId`.                           |
+| POST        | `/selfsaga/users/{username}/goals/{goalId}/tasks`                        | Create a task under a specific goal for a user.                         |
+| PUT         | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}`               | Update a task under a specific goal.                                    |
+| DELETE      | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}`               | Delete a task under a specific goal.                                    |
+| PATCH       | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}/complete`      | Mark a task connected to a specific goal as complete and gain XP.       |
 
 
 [1]: #project-overview
