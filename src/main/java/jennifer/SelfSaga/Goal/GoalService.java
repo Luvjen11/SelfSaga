@@ -1,8 +1,11 @@
 package jennifer.SelfSaga.Goal;
 
+import java.nio.file.AccessDeniedException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +20,8 @@ public class GoalService {
 
     @Autowired
     private UserRepository userRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(GoalService.class);
 
     //get goals by username
     public List<Goal> getGoalsByUsername(String username) {
@@ -69,6 +74,76 @@ public class GoalService {
 
         goalRepository.delete(goal);
 
+    }
+
+    public Goal completeGoal(Long goalId, String username) throws AccessDeniedException {
+
+        //check goal existance
+        Goal goal = goalRepository.findById(goalId)
+                .orElseThrow(() -> new NoSuchElementException("Goal not found with ID: " + goalId));
+    
+        // Check if the user owns the goal
+        User user = goal.getUser();
+        if (user == null || !user.getUsername().equals(username)) {
+            throw new AccessDeniedException("You do not have permission to complete this goal!");
+        }
+
+        // check completed goaal
+        if (!goal.getIsCompleted()) {
+            goal.setIsCompleted(true);
+    
+            // Award points based on goal type
+            int pointsEarned = goal.getGoalType().getPoints();
+            user.setXp(user.getXp() + pointsEarned);
+            logger.info("Goal completed. Points earned: {}", pointsEarned);
+    
+            // Check if user should level up
+            checkLevelUp(user);
+    
+            // Save updates
+            goalRepository.save(goal);
+            userRepository.save(user);
+        }
+
+        return goal;
+    } 
+
+    public void checkLevelUp(User user) {
+
+        // Collect the current XP and level of the user
+        int currentXp = user.getXp();
+        int currentLevel = user.getLevel();
+        
+        //define required xp for next level
+        //check if user can level up based on accumulated XP
+        while (currentXp >= xpForNextLevel(currentLevel + 1)) {
+
+            // if yes then increment level by one
+            currentLevel++;
+            // save user updated details
+            user.setLevel(currentLevel); 
+        }
+
+        userRepository.save(user);
+
+    }
+
+    //method to get xp for next level (use switch)
+    public int xpForNextLevel(int level) {
+        switch (level) {
+            case 1:
+                return 100;
+            case 2:
+                return 250;
+            case 3:
+                return 400;
+            case 4:
+                return 600;
+            case 5:
+                return 850;
+            default:  
+                return 1000 + (level - 5) * 200; // increse of 200
+        }
     }
 
 }

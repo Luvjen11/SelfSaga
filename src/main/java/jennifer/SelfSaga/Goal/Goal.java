@@ -11,7 +11,6 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jennifer.SelfSaga.Task.Task;
-import jennifer.SelfSaga.Task.TaskType;
 import jennifer.SelfSaga.User.User;
 
 import java.time.LocalDate;
