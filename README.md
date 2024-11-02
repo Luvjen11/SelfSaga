@@ -5,10 +5,11 @@
 - [Project Overview][1]
 - [Technologies used][2]
 - [Installation & Setup][3]
+- [Requirements][7]
 - [MVP, core features and POST-MVP][4]
 - [User Story ][5]
 - [API Endpoints][6]
-- [Running Tests][]
+- [Running Tests][8]
 
 ## Project Overview
 
@@ -52,6 +53,8 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 - Frontend: (Future implementation - planned to use React)
 
 ## Installation & Setup
+
+## Requirements
 
 ## MVP, core features and POST-MVP 
 
@@ -137,6 +140,7 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 | DELETE      | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}`               | Delete a task under a specific goal.                                    |
 | PATCH       | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}/complete`      | Mark a task connected to a specific goal as complete and gain XP.       |
 
+## Running Tests
 
 [1]: #project-overview
 [2]: #technologies-used
@@ -144,3 +148,5 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
 [4]: #mvp-core-features-and-post-mvp
 [5]: #user-story
 [6]: #api-endpoints
+[7]: #requirements
+[8]: #running-tests
