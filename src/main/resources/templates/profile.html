@@ -48,7 +48,7 @@
             padding: 10px;
             border: 2px solid #AFA798;
             margin-top: 10px;
-            border-radius:  10px;
+            border-radius: 10px;
         }
 
         h2,
@@ -73,21 +73,8 @@
             <p>Goals Completed: <span id="goalsCompleted">2</span></p>
             <p>Tasks Completed: <span id="tasksCompleted">12</span> / <span id="totalTasks">15</span></p>
         </div>
-        <div class="goals">
+        <div id="goals" class="goals">
             <h3>Goals</h3>
-            <div class="goal">
-                <p>Goal 1 (In Progress)</p>
-                <ul>
-                    <li>Task 1 - Completed</li>
-                    <li>Task 2 - Pending</li>
-                </ul>
-            </div>
-            <div class="goal">
-                <p>Goal 2 (Completed)</p>
-                <ul>
-                    <li>Task 3 - Completed</li>
-                </ul>
-            </div>
         </div>
     </div>
 
@@ -120,20 +107,23 @@
     }
 
     // get data from api
-    function fetchUserProfile() {
-            fetch('/selfsaga/users/profile') // Replace with your API endpoint
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => displayUserProfile(data))
-                .catch(error => console.error('Error fetching user profile:', error));
+    fetch('/selfsaga/users/{username}', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token') // Assumes the token is stored in localStorage
         }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => displayUserProfile(data))
+        .catch(error => console.error('Error fetching user profile:', error));
 
-        // Call the function on page load
-        document.addEventListener("DOMContentLoaded", fetchUserProfile);
+
+    // Call the function on page load
+    document.addEventListener("DOMContentLoaded", fetchUserProfile);
 </script>
 
 </html>
