@@ -20,4 +20,9 @@ public class HomeController {
     public String handleSelfsaga() {
         return "selfsaga"; 
     }
+
+    @GetMapping("/selfsaga/users/{username}") 
+    public String handleProfile() {
+        return "profile";
+    }
 }
