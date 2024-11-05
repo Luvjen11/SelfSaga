@@ -2,6 +2,10 @@ package jennifer.SelfSaga.User;
 
 import org.springframework.stereotype.Service;
 
+import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
+import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
+import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,30 +20,30 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); //for password hashing
+    private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); // for password hashing
 
     public User registerUser(User user) {
 
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
-            throw new RuntimeException("This Email is already registered!");
+            throw new EmailAlreadyRegisteredException("This Email is already registered!");
         }
         user.setEmail(user.getEmail());
 
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
-            throw new RuntimeException("This Username is already taken");
+            throw new UsernameAlreadyTakenException("This Username is already taken");
         }
         user.setUsername(user.getUsername());
 
         // implement password service logic
 
         if (!isPasswordStrong(user.getPassword())) {
-            throw new RuntimeException("Password is not strong enough!");
+            throw new WeakPasswordException("Password is not strong enough! Must be at least 8 characters.");
         }
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(hashedPassword);
 
-        return userRepository.save(user);  
+        return userRepository.save(user);
     }
 
     private boolean isPasswordStrong(String password) {

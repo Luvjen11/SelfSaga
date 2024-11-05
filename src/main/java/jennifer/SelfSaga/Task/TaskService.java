@@ -21,7 +21,7 @@ import jennifer.SelfSaga.User.UserRepository;
 @Transactional
 public class TaskService {
 
-    private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
+    // private static final Logger logger = LoggerFactory.getLogger(TaskService.class); 
 
     @Autowired
     private TaskRepository taskRepository;
@@ -45,7 +45,7 @@ public class TaskService {
     // create task for specific goal
     public Task createTask(String username, Task task, Long goalId) {
 
-        logger.info("starting create task");
+        //logger.info("starting create task");
         // get user first
         User user = userRepository.findByUsername(username).orElseThrow(() -> new NoSuchElementException("User not found with username: " + username));
         
@@ -142,7 +142,7 @@ public class TaskService {
             // Add XP for task completion if TaskType is not null
             if (task.getTaskType() != null) {
                 int xpEarned = task.getTaskType().getXpValue();
-                logger.debug("Task completed. XP earned: {}", xpEarned);
+                //logger.debug("Task completed. XP earned: {}", xpEarned);
                 user.setXp(user.getXp() + xpEarned);
             } else {
                 throw new IllegalStateException("TaskType is missing for task " + task.getId());
