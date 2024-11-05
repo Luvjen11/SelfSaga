@@ -4,11 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #FBD7DC;
+            font-family: 'Poppins', sans-serif;
+            color: #7D748C;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .home-container {
+            background-color: #FFE2E6;
+            border-radius: 15px;
+            padding: 40px;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #7D748C;
+            margin-bottom: 20px;
+        }
+
+    
+        a {
+            color: #FF91A1;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #FFB6C1;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #FF91A1;
+        }
+
+        .intro-text {
+            margin: 20px 0;
+            font-size: 1rem;
+        }
+
+        .links {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to SelfSaga</h1>
-    <p>View <a href="/selfsaga/users/{username}">profile card</a></p>
-    <a href="/selfsaga/login">Login</a> or 
-    <a href="/selfsaga/users/register">Register</a>
+    <div class="home-container">
+        <h1>Welcome to SelfSaga</h1>
+        <p class="intro-text">Your personal productivity journey starts here! Track goals, level up, and achieve more with SelfSaga.</p>
+        
+        <div class="links">
+            <a href="/selfsaga/users/{username}" class="btn">View Profile Card</a>
+            <a href="/selfsaga/goals" class="btn">Manage Your Goals</a>
+            <a href="/selfsaga/tasks" class="btn">View Your Tasks</a>
+            <a href="/selfsaga/users/register" class="btn">Register New Account</a>
+        </div>
+
+        <p class="intro-text">
+            Already have an account? <a href="/selfsaga/login">Login here</a>
+        </p>
+    </div>
 </body>
 </html>
