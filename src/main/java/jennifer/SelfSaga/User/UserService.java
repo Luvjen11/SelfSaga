@@ -8,6 +8,8 @@ import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,14 +24,19 @@ public class UserService implements UserDetailsService {
 
     private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); // for password hashing
 
+    private static final Logger logger = LoggerFactory.getLogger(UserService.class); 
+
     public User registerUser(User user) {
 
         if (userRepository.findByEmail(user.getEmail()).isPresent()) {
+            logger.info("This Email is already registered");
             throw new EmailAlreadyRegisteredException("This Email is already registered!");
         }
         user.setEmail(user.getEmail());
 
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
+            logger.info("This Username is already taken");
+
             throw new UsernameAlreadyTakenException("This Username is already taken");
         }
         user.setUsername(user.getUsername());
