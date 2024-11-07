@@ -90,6 +90,8 @@ exit;
 - Spring-boot-starter-thymeleaf
 - Spring-boot-starter-web
 - Spring-boot-devtools 
+- Spring-boot-openapi
+- Slf4j-api
  4. Unzip the downloaded archive into your repository.
  Ensure that your local repository is the current working directory in the terminal, then extract the downloaded zip file. **IMPORTANT:** Do NOT unzip the archive in (macOS) Finder or (Windows) Explorer as the extracted files won't be correctly positioned.
    - macOS / Git Bash: `tar -xvf [download directory]/selfsaga.zip --strip=1 -C .`, e.g. `tar -xvf ~/Downloads/selfsaga.zip --strip=1 -C .`
@@ -103,13 +105,13 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.open-in-view=true
 spring.config.import=optional:./local.properties
 ```
-5. In order to prevent sensitive values from being committed to version control, add a new entry to the .gitignore file:
+7. In order to prevent sensitive values from being committed to version control, add a new entry to the .gitignore file:
 
 ```
 local.properties
 ```
 
-6. Create a new file at src/main/resources/local.properties and paste in the following: 
+8. Create a new file at src/main/resources/local.properties and paste in the following: 
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/selfsaga
@@ -121,7 +123,7 @@ spring.datasource.username=root
 spring.datasource.password=YOUR_MYSQL_PASSWORD
 ```
 
-7. Replace the username and password values with your MySQL credentials. **IMPORTANT:** Ensure there are no spaces before or after the password.
+9. Replace the username and password values with your MySQL credentials. **IMPORTANT:** Ensure there are no spaces before or after the password.
 
 ### Export Database
 
