@@ -5,11 +5,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -26,7 +29,7 @@ public class UserControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @Autowired
+    @MockBean
     private UserService userService;
 
     @Autowired
@@ -52,7 +55,6 @@ public class UserControllerTest {
         mockMvc.perform(post("/selfsaga/users/register")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(sampleUser)))
-                .andDo(result -> System.out.println("Response JSON: " + result.getResponse().getContentAsString()))
                 .andExpect(status().isCreated());
     }
 
@@ -60,16 +62,16 @@ public class UserControllerTest {
     @DisplayName("POST /selfsaga/users/register - failure due to duplicate username or email")
     public void testRegisterUser_Failure_DuplicateUser() throws Exception {
         // Arrange
-        User sampleUser1 = createSampleUser();
-        User sampleUser2 = createSampleUser(); // same email/username as sampleUser1
+        User sampleUser = createSampleUser();
 
-        // Register sampleUser1 directly in the database to simulate an existing user
-        userService.registerUser(sampleUser1);
+        // Simulate the behavior of the service when trying to register a duplicate user
+        doThrow(new IllegalArgumentException("This Email is already registered!"))
+                .when(userService).registerUser(any(User.class));
 
         // Act & Assert
         mockMvc.perform(post("/selfsaga/users/register")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(sampleUser2)))
+                .content(objectMapper.writeValueAsString(sampleUser)))
                 .andExpect(status().isBadRequest())
                 .andExpect(content().string("This Email is already registered!"));
     }

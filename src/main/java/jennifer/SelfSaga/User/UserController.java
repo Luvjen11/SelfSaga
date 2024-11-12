@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import jennifer.SelfSaga.Task.TaskService;
 import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
 import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;

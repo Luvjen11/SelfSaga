@@ -52,7 +52,7 @@ Users can use points earned from tasks to buy customisation items (e.g. avatar o
   - **Authentication**: Secured access to most endpoints, allowing public access only to specific endpoints like registration, login, and Swagger UI.
   - **Authorization**: Configured to restrict access to certain paths, only allowing authenticated users to interact with protected resources.
 - Testing
-  - **JUnit 5**: Used for unit testing, following a Test-Driven Development (TDD) approach to ensure the reliability and robustness of the backend logic.
+  - **JUnit 5**: Used for unit testing.
 - Database
   - **MySQL**: Relational database for persisting user data, goals, tasks, and other application-related information.
 - API Documentation
