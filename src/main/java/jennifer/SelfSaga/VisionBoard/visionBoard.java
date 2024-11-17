@@ -3,8 +3,6 @@ package jennifer.SelfSaga.VisionBoard;
 
 
 import java.sql.Blob;
-import java.time.LocalDate;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,18 +14,22 @@ import jennifer.SelfSaga.User.User;
 
 @Entity
 @Table(name="visionboard")
-public class visionBoard {
+public class VisionBoard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private Blob image;
-    private LocalDate createdAt;
+    // private LocalDate createdAt;
       
-    @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    
+    public VisionBoard() {
+
+    } 
 
     public Long getId() {
         return id;
@@ -45,8 +47,16 @@ public class visionBoard {
         this.image = image;
     }
 
-    public LocalDate getCreatedAt() {
-        return createdAt;
+    // public LocalDate getCreatedAt() {
+    //     return createdAt;
+    // }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
 }
