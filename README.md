@@ -319,12 +319,20 @@ Stop the application by pressing `Ctrl + C`
 
 | HTTP Method | Endpoint                                                                 | Description                                                             |
 |-------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| GET         | `/selfsaga/users/{username}/visionboard`                        | Get all pictures in vision board.                           |
+| POST        | `/selfsaga/users/{username}/visionboard`                        | Create an image for the visionboard                         |                                   |
+| DELETE      | `/selfsaga/users/{username}/visionboard/{visionBoardId}`               | Delete an image from visionboard.                                    |
+
+
+### VisionBoard Endpoints
+
+| HTTP Method | Endpoint                                                                 | Description                                                             |
+|-------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | GET         | `/selfsaga/users/{username}/goals/{goalId}/tasks`                        | Get all tasks of a specific goal by `goalId`.                           |
 | POST        | `/selfsaga/users/{username}/goals/{goalId}/tasks`                        | Create a task under a specific goal for a user.                         |
 | PUT         | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}`               | Update a task under a specific goal.                                    |
 | DELETE      | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}`               | Delete a task under a specific goal.                                    |
 | PATCH       | `/selfsaga/users/{username}/goals/{goalId}/tasks/{taskId}/complete`      | Mark a task connected to a specific goal as complete and gain XP.       |
-
 
 [1]: #project-overview
 [2]: #technologies-used
