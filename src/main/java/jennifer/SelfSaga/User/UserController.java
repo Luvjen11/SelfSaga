@@ -6,13 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
 import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
+import jennifer.SelfSaga.User.UserProfileDTO.UserProfileDTO;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -37,5 +40,12 @@ public class UserController {
             logger.info("checking duplicates informations");
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<UserProfileDTO> getUserProfile(@RequestParam String username) {
+
+        UserProfileDTO profile = userService.getUserDetails(username);
+        return ResponseEntity.ok(profile);
     }
 }

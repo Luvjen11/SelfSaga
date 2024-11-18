@@ -5,12 +5,15 @@ import org.springframework.stereotype.Service;
 import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
 import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
+import jennifer.SelfSaga.User.UserProfileDTO.UserProfileDTO;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -77,5 +80,20 @@ public class UserService implements UserDetailsService {
         } else {
             throw new UsernameNotFoundException(username);
         }
+    }
+
+    //to fetch user profile data
+    public UserProfileDTO getUserDetails(String username) {
+
+        //ensure username exsits
+        User user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new NoSuchElementException("User not found with username: " + username));
+
+        UserProfileDTO profile = new UserProfileDTO();
+        profile.setEmail(user.getEmail());
+        profile.setUsername(user.getUsername());
+        profile.setXp(user.getXp());
+        profile.setLevel(user.getLevel());
+        return profile;
     }
 }
