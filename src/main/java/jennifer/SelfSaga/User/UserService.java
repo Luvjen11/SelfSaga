@@ -82,6 +82,13 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    // find user by username
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new NoSuchElementException("User not found with username: " + username));
+    }
+
+
     //to fetch user profile data
     public UserProfileDTO getUserDetails(String username) {
 

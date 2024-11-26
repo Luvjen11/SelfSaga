@@ -3,8 +3,11 @@ package jennifer.SelfSaga.Home;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
+
 @Controller
 public class HomeController {
+
 
     @GetMapping("/selfsaga/login")
     public String handleLogin() {
@@ -19,10 +22,5 @@ public class HomeController {
     @GetMapping("/selfsaga")
     public String handleSelfsaga() {
         return "selfsaga"; 
-    }
-
-    @GetMapping("/selfsaga/users/{username}") 
-    public String handleProfile() {
-        return "profile";
     }
 }

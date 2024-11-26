@@ -30,7 +30,7 @@ public class WebSecurityConfig {
                             "/v3/api-docs/**",
                             "/swagger-ui.html",
                             "/swagger-resources/**",
-                            "/webjars/**").permitAll(); // can access without authentication
+                            "/webjars/**", "/selfsaga/profile", "/selfsaga/users/{username}").permitAll(); // can access without authentication
                     registry.anyRequest().authenticated();
                 })
                 .formLogin(form -> form

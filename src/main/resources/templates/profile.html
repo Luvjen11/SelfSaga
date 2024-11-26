@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -87,6 +86,11 @@
         .username {
             padding: 20px;
             margin-top: 4rem;
+            font-size: 1.5rem;
+        }
+
+        .level {
+            padding: 5px 20px;
             font-size: 1.5rem;
         }
 
@@ -227,7 +231,8 @@
             <div class="profile-pic">
                 <img src="/src/main/resources/static/images/avatar.jpeg" alt="Profile picture">
             </div>
-            <h2 class="username">USERNAME</h2>
+            <h2 class="username"><span th:text="${user.username}"></span></h2>
+            <h3 class="level">LVL <span th:text="${user.level}"></span></h3>
             <div class="profile-nav">
                 <button>About</button>
                 <button>Achieve</button>
@@ -248,20 +253,20 @@
                 <div class="progress-card">
                     <h3>Progress</h3> <br>
                     <div>
-                        Total XP: <span></span>
+                        <p id="xp">Total XP: <span th:text="${user.xp}"></span></p>
                     </div><br>
                     <div class="progress-bar">
                         <div class="progress-fill"></div>
                     </div>
-                    <p>Level 10 - 750/1000 XP</p>
+                    <p>Level <span th:text="${user.level}"></span> - <span th:text="${user.xp}"></span>/1000 XP</p>
                 </div>
 
                 <div class="progress-card">
                     <h3>Achievements</h3>
                     <div class="achievements">
                         <div>Total goals completed: <span>3</span></div>
-                        <div>⭐ <span>5</span> Badges</span>
-                            <span>❤️ <span>5</span> Streaks</span>
+                        <div>⭐ <span id="badge">5</span> Badges</span>
+                            <span>❤️ <span id="streaks">5</span> Streaks</span>
                         </div>
                     </div>
                 </div>
@@ -288,5 +293,27 @@
     </div>
     </div>
 </body>
+
+<!-- <script>
+    async function loadProfile(username) {
+        try {
+            const response = await fetch(`/selfsaga/users/${username}`);
+            if (!response.ok) {
+                throw new Error('Failed to load profile');
+            }
+            const profile = await response.json();
+
+            document.getElementById('username').innerText = profile.username;
+            document.getElementById('level').innerText = profile.level;
+            document.getElementById('xp').innerText = profile.xp;
+        } catch (error) {
+            console.error('Error loading profile:', error);
+            alert('Unable to load profile. Please try again later.');
+        }
+    }
+    // Call the function with the logged-in user's username
+    loadProfile('testuser');
+
+</script> -->
 
 </html>

@@ -8,9 +8,15 @@ public class UserProfileDTO {
     private int level;
 
     public UserProfileDTO() {
-        //empty constructor
-     } 
- 
+        // empty constructor
+    }
+
+    public UserProfileDTO(String username, String email, int xp, int level) {
+        this.username = username;
+        this.email = email;
+        this.xp = xp;
+        this.level = level;
+    }
 
     public String getEmail() {
         return email;

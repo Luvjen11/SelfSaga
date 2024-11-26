@@ -1,21 +1,24 @@
 package jennifer.SelfSaga.User;
 
+import java.security.Principal;
+import java.util.NoSuchElementException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
 import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
-import jennifer.SelfSaga.User.UserProfileDTO.UserProfileDTO;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -26,7 +29,10 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class); 
+    @Autowired
+    UserRepository userRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @PostMapping("/users/register")
     public ResponseEntity<String> registerUser(@Valid @RequestBody User user) {
@@ -42,10 +48,37 @@ public class UserController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<UserProfileDTO> getUserProfile(@RequestParam String username) {
+    @GetMapping("/profile")
+    public String getCurrentUserProfile(Model model, Principal principal) {
+        // Fetch the logged-in user's details
+        User user = userService.findByUsername(principal.getName());
+        System.out.println("Principal name: " + principal.getName());
 
-        UserProfileDTO profile = userService.getUserDetails(username);
-        return ResponseEntity.ok(profile);
+        System.out.println("Username: " + user.getUsername());
+        System.out.println("Level: " + user.getLevel());
+        System.out.println("XP: " + user.getXp());
+
+        model.addAttribute("username", user.getUsername());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("xp", user.getXp());
+        model.addAttribute("level", user.getLevel());
+
+        return "profile"; // Thymeleaf will look for profile.html
     }
+
+
+    // @GetMapping("/selfsaga/users/{username}")
+    // public String getUserProfile(@PathVariable String username, Model model) {
+    // User user = userRepository.findByUsername(username)
+    // .orElseThrow(() -> new NoSuchElementException("User not found with username:
+    // " + username));
+
+    // model.addAttribute("username", user.getUsername());
+    // model.addAttribute("email", user.getEmail());
+    // model.addAttribute("xp", user.getXp());
+    // model.addAttribute("level", user.getLevel());
+
+    // return "profile";
+    // }
+
 }
