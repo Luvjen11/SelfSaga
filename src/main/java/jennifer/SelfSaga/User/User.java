@@ -20,6 +20,7 @@ public class User {
     private String username;
     private int xp = 0;
     private int level =1;
+    private String bio;
 
     public User() {
        //empty constructor
@@ -74,5 +75,13 @@ public class User {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }
