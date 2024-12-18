@@ -103,7 +103,15 @@ public class UserService implements UserDetailsService {
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found with username: " + username));
         return user.getProfilePicture();
     }
+
+    //to add user bio
+    public void updateUserBio(String username, String bio) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found"));
+        user.setBio(bio);
+        userRepository.save(user);
+    }
     
+
     //to fetch user profile data
     public UserProfileDTO getUserDetails(String username) {
 

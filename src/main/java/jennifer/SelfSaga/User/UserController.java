@@ -21,6 +21,7 @@ import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,7 +52,7 @@ public class UserController {
         }
     }
 
-     @PostMapping("/{username}/profile-picture")
+     @PostMapping("/users/{username}/profile-picture")
     public ResponseEntity<String> uploadProfilePicture(@PathVariable String username, @RequestParam("file") MultipartFile file) {
         try {
             userService.uploadProfilePicture(username, file);
@@ -61,10 +62,16 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{userId}/profile-picture")
+    @GetMapping("/users/{username}/profile-picture")
     public ResponseEntity<byte[]> getProfilePicture(@PathVariable String username) {
         byte[] image = userService.getProfilePicture(username);
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
+    }
+
+    @PatchMapping("/users/{username}/bio")
+    public ResponseEntity<String> updateUserBio(@PathVariable String username, @RequestBody String bio) {
+        userService.updateUserBio(username, bio);
+        return ResponseEntity.ok("Bio updated successfully");
     }
 
     @GetMapping("/profile")
