@@ -1,6 +1,7 @@
 package jennifer.SelfSaga.User;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
 import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
@@ -9,11 +10,13 @@ import jennifer.SelfSaga.User.UserProfileDTO.UserProfileDTO;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.NoSuchElementException;
+import java.io.IOException;
 import java.util.Optional;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -88,7 +91,19 @@ public class UserService implements UserDetailsService {
                 .orElseThrow(() -> new NoSuchElementException("User not found with username: " + username));
     }
 
+    //upload profile picture
+    public void uploadProfilePicture(String username, MultipartFile file) throws IOException {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found with username: " + username));
+        user.setProfilePicture(file.getBytes());
+        userRepository.save(user);
+    }
 
+    //get a profile picture
+    public byte[] getProfilePicture(String username) {
+        User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found with username: " + username));
+        return user.getProfilePicture();
+    }
+    
     //to fetch user profile data
     public UserProfileDTO getUserDetails(String username) {
 

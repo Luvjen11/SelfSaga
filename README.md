@@ -294,6 +294,9 @@ Stop the application by pressing `Ctrl + C`
 | POST        | `/selfsaga/users/register`           | Register a new user with email, password, and username.           |
 | POST        | `/selfsaga/login`                    | Authenticate a user.                                              |
 | GET         | `/selfsaga/users/{username}`         | Returns user dashboard/profile details (goals, tasks, progress, level, badge, etc.). |
+| POST        | `/selfsaga/users/{username}/profile-picture`           | Upload a profile picture.           |
+| GET        | `/selfsaga/users/{username}/profile-picture`                    | Retrieve a profile picture.                                              |
+| PATCH         | `/selfsaga/users/{username}/bio`         | Update the user's bio. |
 
 ### Goal Endpoints
 

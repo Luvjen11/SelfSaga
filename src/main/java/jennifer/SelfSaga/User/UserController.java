@@ -1,7 +1,6 @@
 package jennifer.SelfSaga.User;
 
 import java.security.Principal;
-import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +17,6 @@ import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 

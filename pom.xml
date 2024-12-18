@@ -84,7 +84,7 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 
-	</dependencies>
+ </dependencies>
 
 	<build>
 		<plugins>
