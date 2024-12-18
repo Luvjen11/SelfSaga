@@ -1,15 +1,19 @@
 package jennifer.SelfSaga.User;
 
 import java.security.Principal;
+import java.io.IOException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.Valid;
 import jennifer.SelfSaga.User.Exceptions.EmailAlreadyRegisteredException;
@@ -17,6 +21,7 @@ import jennifer.SelfSaga.User.Exceptions.UsernameAlreadyTakenException;
 import jennifer.SelfSaga.User.Exceptions.WeakPasswordException;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -44,6 +49,22 @@ public class UserController {
             logger.info("checking duplicates informations");
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
+    }
+
+     @PostMapping("/{username}/profile-picture")
+    public ResponseEntity<String> uploadProfilePicture(@PathVariable String username, @RequestParam("file") MultipartFile file) {
+        try {
+            userService.uploadProfilePicture(username, file);
+            return ResponseEntity.ok("Profile picture uploaded successfully");
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to upload profile picture");
+        }
+    }
+
+    @GetMapping("/{userId}/profile-picture")
+    public ResponseEntity<byte[]> getProfilePicture(@PathVariable String username) {
+        byte[] image = userService.getProfilePicture(username);
+        return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(image);
     }
 
     @GetMapping("/profile")
