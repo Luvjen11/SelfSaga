@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jennifer.SelfSaga.Quest.Quest;
 import jennifer.SelfSaga.Task.Task;
 import jennifer.SelfSaga.User.User;
 
@@ -40,6 +41,11 @@ public class Goal {
 
     @Enumerated(EnumType.STRING)
     private GoalType goalType;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "quest_id", nullable = true) // Optional quest association
+    private Quest quest;
+
 
 
     //private String username;
@@ -121,6 +127,14 @@ public class Goal {
 
     public void setGoalType(GoalType goalType) {
         this.goalType = goalType;
+    }
+
+    public Quest getQuest() {
+        return quest;
+    }
+    
+    public void setQuest(Quest quest) {
+        this.quest = quest;
     }
     
     // public String getUsername() {

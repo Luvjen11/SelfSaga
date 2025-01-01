@@ -12,6 +12,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jennifer.SelfSaga.Goal.Goal;
+import jennifer.SelfSaga.Quest.Quest;
 import jennifer.SelfSaga.User.User;
 
 @Entity
@@ -35,6 +36,11 @@ public class Task {
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "quest_id", nullable = true) // Tasks can belong to quests
+    private Quest quest;
+
 
     @Enumerated(EnumType.STRING)
     private TaskType taskType;
@@ -118,6 +124,14 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Quest getQuest() {
+        return quest;
+    }
+    
+    public void setQuest(Quest quest) {
+        this.quest = quest;
     }
 
 }
