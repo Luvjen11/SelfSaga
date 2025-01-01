@@ -11,10 +11,6 @@ public class ChapterService {
     @Autowired
     private ChapterRepository chapterRepository;
 
-    public Chapter createChapter(Chapter chapter) {
-        return chapterRepository.save(chapter);
-    }
-
     public List<Chapter> getAllChapters() {
         return chapterRepository.findAll();
     }
